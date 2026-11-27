@@ -97,7 +97,7 @@ namespace Noise
 			}
             
             
-			Console.Beep(Freq,Dur,Sample);
+			Console.Beep(Freq,Dur);
 		}
 
         public MainPage()
