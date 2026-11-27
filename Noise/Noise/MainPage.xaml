@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:Noise"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Noise.MainPage">
+
+    <!-- 0=Image(Square), 1=Stop, 2=Slider, 3=D-Pad, 4=Export+Add -->
+    <Grid Padding="16,0"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions="*"
+          RowSpacing="8">
+
+        <!-- Row 0: SQUARE Image - Height = Width, adaptive -->
+        <Border x:Name="SquareBox"
+                Grid.Row="0"
+                Grid.Column="0"
+                StrokeThickness="0"
+                Padding="0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
+                HeightRequest="{Binding Width, Source={x:Reference SquareBox}}">
+
+            <Image x:Name="DisplayImage"
+                   Aspect="AspectFill"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill" />
+        </Border>
+
+        <!-- Row 1: Stop -->
+        <Button x:Name="Stop"
+                Grid.Row="1"
+                Text="Stop Rendering."
+                HeightRequest="36"
+                FontSize="14"
+                Padding="0"
+                VerticalOptions="End" />
+
+        <!-- Row 2: Slider -->
+        <Slider Grid.Row="2"
+                x:Name="Step"
+                Minimum="0"
+                Maximum="100"
+                HeightRequest="28" />
+
+        <!-- Row 3: D-Pad - Scaled Down -->
+        <Grid Grid.Row="3"
+              RowDefinitions="Auto,Auto,Auto"
+              ColumnDefinitions="*,Auto,Auto,Auto,*"
+              RowSpacing="4"
+              ColumnSpacing="4"
+              HorizontalOptions="Center">
+
+            <Button x:Name="Up" Grid.Row="0" Grid.Column="2" Text="↑" WidthRequest="48" HeightRequest="48" FontSize="20" Padding="0" />
+            <Button x:Name="Left" Grid.Row="1" Grid.Column="1" Text="←" WidthRequest="48" HeightRequest="48" FontSize="20" Padding="0" />
+            <Button x:Name="Center" Grid.Row="1" Grid.Column="2" Text="O" WidthRequest="48" HeightRequest="48" FontSize="20" Padding="0" />
+            <Button x:Name="Right" Grid.Row="1" Grid.Column="3" Text="→" WidthRequest="48" HeightRequest="48" FontSize="20" Padding="0" />
+            <Button x:Name="Down" Grid.Row="2" Grid.Column="2" Text="↓" WidthRequest="48" HeightRequest="48" FontSize="20" Padding="0" />
+
+        </Grid>
+
+        <!-- Row 4: Export + AddFrame side-by-side, very bottom -->
+        <Grid Grid.Row="4"
+              ColumnDefinitions="*,*"
+              ColumnSpacing="8"
+              Margin="0,0,0,16">
+
+            <Button x:Name="Export"
+                    Grid.Column="0"
+                    Text="Export"
+                    HeightRequest="40"
+                    FontSize="14"
+                    Padding="0" />
+
+            <Button x:Name="Add"
+                    Grid.Column="1"
+                    Text="AddFrame"
+                    HeightRequest="40"
+                    FontSize="14"
+                    Padding="0" />
+
+        </Grid>
+
+    </Grid>
+</ContentPage>
